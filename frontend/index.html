@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>3-Tier App</title></head>
+<body>
+  <h1>My 3-Tier Docker App</h1>
+  <ul id="list">Loading...</ul>
+  <script>
+    fetch("/api/items")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("list").innerHTML =
+          data.map(i => "<li>" + i + "</li>").join("");
+      })
+      .catch(() => {
+        document.getElementById("list").innerText = "Backend is not connected";
+      });
+  </script>
+</body>
+</html>
